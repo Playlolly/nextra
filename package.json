@@ -14,6 +14,9 @@
   "homepage": "https://github.com/playlolly/nextra-theme-docs#readme",
   "author": "Playlolly",
   "license": "MIT",
+  "publishConfig": {
+    "@playlolly:registry": "https://npm.pkg.github.com"
+  },
   "files": [
     "dist/*",
     "style.css"
@@ -61,16 +64,27 @@
     "scroll-into-view-if-needed": "^2.2.29",
     "title": "^3.4.2"
   },
-  "peerDependencies": {
-    "next": ">=9.5.3",
-    "react": ">=16.13.1",
-    "react-dom": ">=16.13.1"
-  },
   "devDependencies": {
+    "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
+    "@tailwindcss/typography": "^0.5.0",
     "@types/flexsearch": "^0.7.3",
     "@types/react": "^17.0.39",
     "autoprefixer": "^10.4.7",
     "cross-env": "^7.0.3",
-    "nextra": "2.0.0-alpha.54"
+    "nextra": "2.0.0-alpha.54",
+    "next": "^12.1.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "postcss": "^8.4.5",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^3.0.23",
+    "cssnano": "^4.1.11",
+    "esbuild": "^0.14.10"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "arrowParens": "avoid"
   }
 }
