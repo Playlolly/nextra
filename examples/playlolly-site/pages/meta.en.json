@@ -1,0 +1,34 @@
+{
+  "index": {
+    "title": "Home",
+    "type": "page",
+    "theme": { "layout": "raw" }
+  },
+  "roadmap": {
+    "title": "Roadmap",
+    "type": "page",
+    "theme": { "layout": "raw" }
+  },
+  "changelogs": {
+    "title": "Changelogs",
+    "type": "page",
+    "theme": {
+      "pagination": true,
+      "sidebar": true
+    }
+  },
+  "docs": {
+    "title": "Docs",
+    "type": "page",
+    "theme": {
+      "pagination": true,
+      "sidebar": true
+    }
+  },
+  "webstore": {
+    "title": "Tebex ↗",
+    "href": "https://playlolly.tebex.io",
+    "type": "page",
+    "newWindow": true
+  }
+}

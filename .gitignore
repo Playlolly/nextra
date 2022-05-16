@@ -1,3 +1,5 @@
 node_modules
-/dist
+dist
 style.css
+.DS_Store
+.next

@@ -1,0 +1,37 @@
+{
+  "name": "playlolly-site",
+  "version": "1.0.0",
+  "author": "Playlolly",
+  "private": true,
+  "description": "Playlolly Website",
+  "scripts": {
+    "dev": "next",
+    "start": "next start",
+    "build": "next build",
+    "export": "next build && next export",
+    "lint": "next lint",
+    "debug": "NODE_OPTIONS='--inspect' next dev",
+    "schema": "ts-json-schema-generator -p ./schema.d.ts -o ./public/schema.json -t Schema"
+  },
+  "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "@reach/skip-nav": "^0.16.0",
+    "copy-to-clipboard": "^3.3.1",
+    "intersection-observer": "^0.10.0",
+    "markdown-to-jsx": "^6.11.4",
+    "next": "^12.1.1",
+    "nextra": "workspace:*",
+    "@playlolly/nextra-theme-docs": "workspace:*",
+    "react-icons": "^4.3.1",
+    "react-youtube-lite": "^2.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.6",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^3.0.23"
+  },
+  "prettier": {
+    "embeddedLanguageFormatting": "off",
+    "htmlWhitespaceSensitivity": "strict"
+  }
+}

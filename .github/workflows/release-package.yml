@@ -20,9 +20,12 @@ jobs:
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
+    # strategy:
+    #   matrix: { dir: ['./packages/nextra', './packages/nextra-theme-docs'] }
     permissions:
       packages: write
       contents: read
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -34,5 +37,7 @@ jobs:
           version: 6.32.13
       - run: pnpm install
       - run: npm publish
+        working-directory: './packages/nextra-theme-docs'
+        # working-directory: ${{ matrix.dir }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

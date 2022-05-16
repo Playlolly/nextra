@@ -1,0 +1,12 @@
+{
+  "playlolly-tesla-core": "1.0.9",
+  "playlolly-tesla-autonomous": "1.0.9",
+  "playlolly-tesla-dealer": "2.0.1",
+  "playlolly-tesla-model-s-plaid": "1.0.3",
+  "playlolly-tesla-model-3": "1.0.1",
+  "playlolly-tesla-model-x-plaid": "1.0.2",
+  "playlolly-tesla-model-y": "1.0.3",
+  "playlolly-tesla-roadster": "1.0.1",
+  "playlolly-tesla-cybertruck-cyberquad": "1.0.1",
+  "playlolly-tesla-semi": "1.0.1"
+}
