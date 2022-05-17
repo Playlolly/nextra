@@ -1,6 +1,6 @@
 {
   "name": "@playlolly/nextra-theme-docs",
-  "version": "0.0.54",
+  "version": "0.0.55",
   "description": "A Nextra documentation theme for the Playlolly website.",
   "main": "index.js",
   "module": "index.js",

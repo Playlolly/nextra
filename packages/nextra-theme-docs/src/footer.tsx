@@ -100,7 +100,7 @@ const Footer: React.FC<{ menu?: boolean }> = ({ menu }) => {
 
   return (
     <footer className="bg-gray-100 dark:bg-neutral-900 pb-[env(safe-area-inset-bottom)]">
-      <div className="py-2 border-b dark:border-neutral-800 hidden md:block">
+      <div className="py-2 border-b dark:border-neutral-800">
         <div className="max-w-[90rem] mx-auto">
           <div className="inline-flex px-4">
             {config.i18n ? (
@@ -117,7 +117,7 @@ const Footer: React.FC<{ menu?: boolean }> = ({ menu }) => {
         </div>
       </div>
       <div className="max-w-[90rem] mx-auto pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)] py-12">
-        <div className="flex justify-between flex-col-reverse md:flex-row items-center md:items-end">
+        <div className="flex justify-between flex-row items-end">
           <span className="text-gray-600 dark:text-gray-400">
             {renderComponent(config.footer, { locale })}
           </span>
