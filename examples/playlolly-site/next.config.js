@@ -27,15 +27,6 @@ module.exports = withNextra({
       },
     ];
   },
-  redirects: () => {
-    return [
-      {
-        source: "/docs",
-        destination: "/docs/index",
-        statusCode: 302,
-      },
-    ];
-  },
   reactStrictMode: true,
   experiments: {
     swcLoader: true,

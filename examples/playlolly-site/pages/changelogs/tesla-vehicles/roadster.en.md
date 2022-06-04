@@ -1,5 +1,5 @@
 ---
-title: Changelog
+title: Changelog - Tesla Roadster
 ---
 
 # Changelog
@@ -14,4 +14,4 @@ title: Changelog
 
 **Added**
 
-- Added Tesla Roadster (2022)
+- Tesla Roadster (2022)

@@ -1,5 +1,5 @@
 ---
-title: Changelog
+title: Changelog - Tesla Cybertruck & Cyberquad
 ---
 
 # Changelog
@@ -14,4 +14,4 @@ title: Changelog
 
 **Added**
 
-- Added Tesla Cybertruck & Cyberquad (2022)
+- Tesla Cybertruck & Cyberquad (2022)

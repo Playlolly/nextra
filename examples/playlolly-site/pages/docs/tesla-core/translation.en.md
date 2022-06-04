@@ -1,5 +1,5 @@
 ---
-title: Translation
+title: Translation - Tesla Core - Docs
 ---
 
 # Translation

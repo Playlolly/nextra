@@ -1,5 +1,5 @@
 ---
-title: Configuration
+title: Configuration - Tesla Core - Docs
 ---
 
 import Callout from '@playlolly/nextra-theme-docs/callout'
@@ -61,7 +61,7 @@ end
 Vehicle hashes for HUD support.
 
 **Type:** `object`\
-**Default:** `{ -252836656, 2006210393, 967185883, 1281801152, -1290262746, 1717202867, -964913869, -450863688, 2014463299 }`
+**Default:** `{2006210393, -252836656, 967185883, -1290262746, 1281801152, 1717202867, -964913869, -2086233241, -450863688, 170327252, 2014463299}`
 
 ### `visibility`
 
@@ -84,14 +84,19 @@ Speed measurement system using `KM/H` or `MPH`.
 Vehicle hashes for supercharger support.
 
 **Type:** `object`\
-**Default:** `{ -252836656, 2006210393, 967185883, 1281801152, -1290262746, 1717202867, -964913869, -450863688, 2014463299 }`
+**Default:** `{2006210393, -252836656, 967185883, -1290262746, 1281801152, 1717202867, -964913869, -2086233241, -450863688, 170327252, 2014463299}`
 
 ### `mapBlipVectors`
 
-Vector locations for the supercharger map blips.
+Vector locations for the Supercharger map blips.
 
-**Type:** `object`\
-**Default:** `{ vector3(-598.74, -2166.83, 5.99), vector3(-1006.07, -1641.55, 4.56), vector3(-2077.59, -298.51, 13.28), vector3(-50.87, -1764.61, 29.09), vector3(1161.94, -1499.23, 34.69), vector3(294.88, -1239.24, 29.28), vector3(-730.49, -907.24, 19.04), vector3(1154.81, -329.18, 69.05), vector3(266.37, -324.51, 44.92), vector3(644.06, 285.27, 103.21), vector3(2569.07, 308.97, 108.6), vector3(-1824.85, 783.56, 138.12), vector3(2546.94, 2609.6, 37.94), vector3(1018.0, 2665.3, 39.63), vector3(42.01, 2791.33, 57.88), vector3(-2533.82, 2350.38, 33.06), vector3(-2533.82, 2350.38, 33.06), vector3(1703.31, 4937.61, 42.08), vector3(1721.21, 6418.76, 33.8), vector3(-204.48, 6226.38, 31.49), vector3(2664.34, 3262.05, 55.24), vector3(1957.35, 3760.39, 32.2) }`
+**Type:** `object`
+
+### `mapSuperchargerVectors`
+
+Vector locations for the Supercharger on the map. The vectors must match the file `playlolly-tesla-supercharger.ymap` which can be found under `playlolly-tesla-core/stream/charger/...`.
+
+**Type:** `object`
 
 ### `mapBlipId`
 

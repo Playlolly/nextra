@@ -1,5 +1,4 @@
 import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
 import nephilim from "../public/images/home/testimonials/nephilim.jpg";
 import onurabicim from "../public/images/home/testimonials/onurabicim.jpg";
 import moebi from "../public/images/home/testimonials/moebi.jpg";
@@ -123,11 +122,14 @@ export const Testimonial: FC = () => {
 
         <div className="max-w-xl mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
           <div className="rounded-md ">
-            <Link href="/webstore/resources">
-              <a className="flex items-center justify-center w-full px-8 py-3  font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
-                Download now →
-              </a>
-            </Link>
+            <a
+              href="https://playlolly.tebex.io/category/resources"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-full px-8 py-3  font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6"
+            >
+              Download now ↗
+            </a>
           </div>
           <div className="relative mt-3 rounded-md sm:mt-0 sm:ml-3">
             <button
@@ -142,8 +144,9 @@ export const Testimonial: FC = () => {
 
         <div className="grid mt-12 gap-x-6 gap-y-6 lg:mt-16 lg:grid-cols-3 ">
           <div className="space-y-6">
-            {configFirst.map((review) => (
+            {configFirst.map((review, key) => (
               <Review
+                key={key}
                 name={review.name}
                 date={review.date}
                 avatar={review.avatar}
@@ -153,8 +156,9 @@ export const Testimonial: FC = () => {
           </div>
 
           <div className="space-y-6">
-            {configSecond.map((review) => (
+            {configSecond.map((review, key) => (
               <Review
+                key={key}
                 name={review.name}
                 date={review.date}
                 avatar={review.avatar}
@@ -164,8 +168,9 @@ export const Testimonial: FC = () => {
           </div>
 
           <div className="space-y-6">
-            {configThird.map((review) => (
+            {configThird.map((review, key) => (
               <Review
+                key={key}
                 name={review.name}
                 date={review.date}
                 avatar={review.avatar}

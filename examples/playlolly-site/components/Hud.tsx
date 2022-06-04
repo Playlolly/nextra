@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import { FC } from "react";
 
@@ -87,11 +86,14 @@ export const Hud: FC = () => {
           </p>
         </div>
         <div className="flex justify-center items-center rounded-md mt-4 mx-auto">
-          <Link href="/webstore/tesla-core">
-            <a className="flex items-center justify-center max-w-4xl px-8 py-3 text-base font-medium text-white no-underline border border-transparent rounded-md bg-teslaRed betterhover:dark:hover:bg-red-700 betterhover:hover:bg-red-700 md:py-3 md:text-lg md:px-5 md:leading-6">
-              Included in Tesla Core $20 →
-            </a>
-          </Link>
+          <a
+            href="https://playlolly.tebex.io/package/4948739"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center max-w-4xl px-8 py-3 text-base font-medium text-white no-underline border border-transparent rounded-md bg-teslaRed betterhover:dark:hover:bg-red-700 betterhover:hover:bg-red-700 md:py-3 md:text-lg md:px-5 md:leading-6"
+          >
+            Included in Tesla Core $20 ↗
+          </a>
         </div>
         <div className="grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-12">
           {config.map((feature) => (

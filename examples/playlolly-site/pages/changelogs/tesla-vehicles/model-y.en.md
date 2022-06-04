@@ -1,5 +1,5 @@
 ---
-title: Changelog
+title: Changelog - Tesla Model Y
 ---
 
 # Changelog
@@ -12,13 +12,13 @@ title: Changelog
 
 **Fixed**
 
-- Fixed right taillight window tint bug
+- Right taillight window tint bug
 
 ## Release 1.0.2
 
 **Added**
 
-- Added latest design of the sports wheels (2022)
+- Latest design of the sports wheels (2022)
 
 ## Release 1.0.1
 
@@ -31,4 +31,4 @@ title: Changelog
 
 **Added**
 
-- Added Tesla Model Y (2022)
+- Tesla Model Y (2022)

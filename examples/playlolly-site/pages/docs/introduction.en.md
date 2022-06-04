@@ -1,3 +1,7 @@
+---
+title: Introduction - Docs
+---
+
 # Introduction
 
 ## Using our Documentation

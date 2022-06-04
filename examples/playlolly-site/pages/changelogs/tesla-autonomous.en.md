@@ -1,14 +1,28 @@
 ---
-title: Changelog
+title: Changelog - Tesla Autonomous
 ---
 
 # Changelog
+
+## Release 1.0.10
+
+**Added**
+
+- Adaptive Lighting function which automatically adjusts the light to the road traffic
+
+**Updated**
+
+- General stability and performance improvements
+
+**Fixed**
+
+- For a small part of users the resource could not be started correctly, this is now fixed
 
 ## Release 1.0.9
 
 **Added**
 
-- Added ultrasonic sounds for reverse camera function (reverse camera is no longer a BETA function)
+- Ultrasonic sounds for reverse camera function (reverse camera is no longer a BETA function)
 
 **Updated**
 
@@ -18,7 +32,7 @@ title: Changelog
 
 **Added**
 
-- Added Reverse Camera _BETA_ function
+- Reverse Camera _BETA_ function
 
 **Updated**
 
@@ -28,7 +42,7 @@ title: Changelog
 
 **Added**
 
-- Added support for custom notification systems
+- Support for custom notification systems
 - A maximum distance between the player and the car can be set for Smart Summon
 
 **Updated**
@@ -43,7 +57,7 @@ title: Changelog
 
 **Added**
 
-- Added Auto Park _BETA_ function which can automatically park at Supercharger parking lots
+- Auto Park _BETA_ function which can automatically park at Supercharger parking lots
 
 **Updated**
 
@@ -69,7 +83,7 @@ title: Changelog
 
 **Added**
 
-- Added Auto Lane Change _BETA_ function which can autonomously overtake other vehicles on the highway
+- Auto Lane Change _BETA_ function which can autonomously overtake other vehicles on the highway
 - When honking with engaged autopilot at a red traffic light with `E`, the traffic light is ignored and the vehicle continues to drive
 - Smart summon now uses local pathing to drive flawlessly to the vehicle owner
 

@@ -1,5 +1,5 @@
 ---
-title: LegacyFuel
+title: LegacyFuel - Tesla Core - Docs
 ---
 
 # LegacyFuel

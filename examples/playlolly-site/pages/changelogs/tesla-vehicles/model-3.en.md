@@ -1,5 +1,5 @@
 ---
-title: Changelog
+title: Changelog - Tesla Model 3
 ---
 
 # Changelog
@@ -14,4 +14,4 @@ title: Changelog
 
 **Added**
 
-- Added Tesla Model 3 (2022)
+- Tesla Model 3 (2022)

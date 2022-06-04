@@ -1,5 +1,5 @@
 ---
-title: Translation
+title: Translation - Tesla Autonomous - Docs
 ---
 
 # Translation
@@ -73,6 +73,14 @@ The translation file can be found in the Playlolly Tesla Autonomous Add-On Resou
 #### `autoPark`
 
 **Default:** `'Auto Park'`
+
+#### `reverseCamera`
+
+**Default:** `'Reverse Camera'`
+
+#### `adaptiveLighting`
+
+**Default:** `'Adaptive Lighting'`
 
 #### `smartSummon`
 

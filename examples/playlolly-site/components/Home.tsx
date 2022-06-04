@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import copy from "copy-to-clipboard";
@@ -10,8 +9,11 @@ import { Dealer } from "./Dealer";
 import { Autonomous } from "./Autonomous";
 import { Testimonial } from "./Testimonials";
 import { FC } from "react";
+import { useRouter } from "next/router";
 
 export const Home: FC = () => {
+  const { locale } = useRouter();
+
   const configCore = [
     {
       title: "HUD",
@@ -38,20 +40,27 @@ export const Home: FC = () => {
     },
   ];
 
+  const configBundles = [
+    {
+      title: "Resources",
+      description: `Includes Tesla Core, Tesla Autonomous, Tesla Dealer, Tesla Model S (2016) and Tesla Model X (2016).`,
+      price: "Buy now $50 to save $10 ↗",
+      link: "https://playlolly.tebex.io/package/5112146",
+    },
+    {
+      title: "Vehicles",
+      description: `Includes Tesla Model S Plaid (2022), Tesla Model S (2016), Tesla Model 3 (2022), Tesla Model X Plaid (2022), Tesla Model X (2016), Tesla Model Y (2022), Tesla Roadster (2022), Tesla Roadster Sport (2011), Tesla Cybertruck & Cyberquad (2022) and Tesla Semi (2022).`,
+      price: "Buy now $100 to save $20 ↗",
+      link: "https://playlolly.tebex.io/package/5068309",
+    },
+  ];
+
   const onClick = () => {
     copy("connect fivem.playlolly.net");
   };
 
   return (
     <>
-      <Head>
-        <title>Playlolly - Powerful FiveM Tesla resources.</title>
-        <meta
-          name="og:description"
-          content="With our resources you have everything that exists in the real world
-          of Tesla right on your FiveM server."
-        />
-      </Head>
       <div className="dark:text-white">
         <div className="px-4 pt-16 pb-8 sm:px-6 sm:pt-24 lg:px-8 dark:text-white">
           <h1 className="max-w-4xl mx-auto text-center text-6xl font-extrabold tracking-tighter leading-[1.1] sm:text-7xl lg:text-8xl xl:text-8xl">
@@ -65,11 +74,14 @@ export const Home: FC = () => {
           </p>
           <div className="max-w-xl mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
             <div className="rounded-md ">
-              <Link href="/webstore/resources">
-                <a className="flex items-center justify-center w-full px-8 py-3  font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6">
-                  Download now →
-                </a>
-              </Link>
+              <a
+                href="https://playlolly.tebex.io/category/resources"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-full px-8 py-3  font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-10 md:leading-6"
+              >
+                Download now ↗
+              </a>
             </div>
             <div className="relative mt-3 rounded-md sm:mt-0 sm:ml-3">
               <button
@@ -128,11 +140,11 @@ export const Home: FC = () => {
               Resources overview
             </h2>
             <p className="mt-4 font-medium text-left sm:text-center text-gray-400 lg:text-xl">
-              As of 2022, the Playlolly team has decided to sell our scripts for
-              a small amount of money. The money raised will be reinvested in
-              future updates and cover the costs of our development server. The
-              scripts are constantly updated with new functions and possible bug
-              fixes.
+              As of 2022, the Playlolly team has decided to sell it's scripts
+              for a small amount of money. The money raised will be reinvested
+              in future updates and cover the costs of our development server.
+              The scripts are constantly updated with new functions and possible
+              bug fixes.
             </p>
             <div className="grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-12">
               <div className="p-10 sm:p-0 md:pr-20 md:pt-10 rounded-xl">
@@ -143,11 +155,14 @@ export const Home: FC = () => {
                     interactions and contains the most important features.
                   </p>
                   <div className="rounded-md mt-4">
-                    <Link href="/webstore/tesla-core">
-                      <a className="flex items-center justify-center w-full px-8 py-3 font-medium text-white no-underline border border-transparent rounded-md bg-teslaRed betterhover:dark:hover:bg-red-700 betterhover:hover:bg-red-700 md:py-3 md:text-lg md:px-5 md:leading-6">
-                        Buy now $20 →
-                      </a>
-                    </Link>
+                    <a
+                      href="https://playlolly.tebex.io/package/4948739"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-full px-8 py-3 font-medium text-white no-underline border border-transparent rounded-md bg-teslaRed betterhover:dark:hover:bg-red-700 betterhover:hover:bg-red-700 md:py-3 md:text-lg md:px-5 md:leading-6"
+                    >
+                      Buy now $20 ↗
+                    </a>
                   </div>
                 </div>
               </div>
@@ -169,7 +184,9 @@ export const Home: FC = () => {
                       {coreFeature.description}
                     </p>
                     <div className="rounded-md mt-4">
-                      <Link href={`#${coreFeature.title.toLowerCase()}`}>
+                      <Link
+                        href={`/index.${locale}#${coreFeature.title.toLowerCase()}`}
+                      >
                         <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-5 md:leading-6">
                           Learn More →
                         </a>
@@ -178,9 +195,9 @@ export const Home: FC = () => {
                   </div>
                 </div>
               ))}
+            </div>
 
-              <br />
-
+            <div className="grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-12">
               <div className="p-10 sm:p-0 md:pr-20 md:pt-10 rounded-xl">
                 <div className="mt-4">
                   <h3 className="text-3xl font-bold text-teslaBlue">ADD-ONS</h3>
@@ -189,18 +206,21 @@ export const Home: FC = () => {
                     immersive and offer entirely new features.
                   </p>
                   <div className="rounded-md mt-4">
-                    <Link href="/webstore/resources">
-                      <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white no-underline bg-teslaBlue border border-transparent rounded-md betterhover:dark:hover:bg-blue-800 betterhover:hover:bg-blue-800 md:py-3 md:text-lg md:px-5 md:leading-6">
-                        Buy now $15 →
-                      </a>
-                    </Link>
+                    <a
+                      href="https://playlolly.tebex.io/category/resources"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white no-underline bg-teslaBlue border border-transparent rounded-md betterhover:dark:hover:bg-blue-800 betterhover:hover:bg-blue-800 md:py-3 md:text-lg md:px-5 md:leading-6"
+                    >
+                      Buy now $15 ↗
+                    </a>
                   </div>
                 </div>
               </div>
 
               {configAddOns.map((addOnFeature) => (
                 <div
-                  className="p-10 bg-gray-100 shadow-lg rounded-xl dark:bg-neutral-900"
+                  className="p-10 bg-gray-100 shadow-lg rounded-xl dark:bg-neutral-900 flex flex-col justify-between"
                   key={addOnFeature.title}
                 >
                   <div>
@@ -208,20 +228,67 @@ export const Home: FC = () => {
                       ADD-ON
                     </p>
                   </div>
-                  <div className="mt-4">
+                  <div className="mt-4 flex-1">
                     <h3 className="text-2xl font-bold dark:text-white">
                       {addOnFeature.title}
                     </h3>
                     <p className="mt-2 text-base font-medium text-gray-500 dark:text-gray-400">
                       {addOnFeature.description}
                     </p>
-                    <div className="rounded-md mt-4">
-                      <Link href={`#${addOnFeature.title.toLowerCase()}`}>
-                        <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-5 md:leading-6">
-                          Learn More →
-                        </a>
-                      </Link>
-                    </div>
+                  </div>
+                  <div className="rounded-md mt-4">
+                    <Link
+                      href={`/index.${locale}#${addOnFeature.title.toLowerCase()}`}
+                    >
+                      <a className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white no-underline bg-black border border-transparent rounded-md dark:bg-white dark:text-black betterhover:dark:hover:bg-gray-300 betterhover:hover:bg-gray-700 md:py-3 md:text-lg md:px-5 md:leading-6">
+                        Learn More →
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-8 lg:gap-x-8 lg:gap-y-12">
+              <div className="p-10 sm:p-0 md:pr-20 md:pt-10 rounded-xl col-span-2">
+                <div className="mt-4">
+                  <h3 className="text-3xl font-bold text-teslaOrange">
+                    BUNDLES
+                  </h3>
+                  <p className="mt-2 text-base font-medium text-gray-500 dark:text-gray-400">
+                    Bundle packages which contain multiple resources at a lower
+                    price.
+                  </p>
+                </div>
+              </div>
+
+              {configBundles.map((bundleFeature) => (
+                <div
+                  className="p-10 bg-gray-100 shadow-lg rounded-xl dark:bg-neutral-900 col-span-3 flex flex-col justify-between"
+                  key={bundleFeature.title}
+                >
+                  <div>
+                    <p className=" text-teslaOrange" aria-hidden="true">
+                      BUNDLE
+                    </p>
+                  </div>
+                  <div className="mt-4 flex-1">
+                    <h3 className="text-2xl font-bold dark:text-white">
+                      {bundleFeature.title}
+                    </h3>
+                    <p className="mt-2 text-base font-medium text-gray-500 dark:text-gray-400 ">
+                      {bundleFeature.description}
+                    </p>
+                  </div>
+                  <div className="rounded-md mt-4">
+                    <a
+                      href={bundleFeature.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-full px-8 py-3 text-base font-medium no-underline bg-teslaOrange border border-transparent rounded-md text-black betterhover:hover:bg-yellow-600 md:py-3 md:text-lg md:px-5 md:leading-6"
+                    >
+                      {bundleFeature.price}
+                    </a>
                   </div>
                 </div>
               ))}

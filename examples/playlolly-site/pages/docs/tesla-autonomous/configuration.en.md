@@ -1,5 +1,5 @@
 ---
-title: Configuration
+title: Configuration - Tesla Autonomous - Docs
 ---
 
 # Configuration
@@ -18,7 +18,7 @@ Command which must be called in the chat with `/...` to trigger the Tesla Autono
 Vehicle hashes for autonomous support.
 
 **Type:** `object`\
-**Default:** `{ -252836656, 2006210393, 967185883, 1281801152, -1290262746, 1717202867, -964913869, -450863688, 2014463299 }`
+**Default:** `{2006210393, -252836656, 967185883, -1290262746, 1281801152, 1717202867, -964913869, -2086233241, -450863688, 170327252, 2014463299}`
 
 ### `vehicleMapBlip`
 
@@ -38,7 +38,7 @@ Enable / Disable the Autopilot command.
 
 ### `command`
 
-Autopilot chat enable / disable command.
+Autopilot chat trigger command.
 
 **Type:** `string`\
 **Default:** `'pilot'`
@@ -61,7 +61,7 @@ Enable / Disable the Crash Avoidance command.
 
 ### `command`
 
-Crash Avoidance chat enable / disable command.
+Crash Avoidance chat trigger command.
 
 **Type:** `string`\
 **Default:** `'crash'`
@@ -77,7 +77,7 @@ Enable / Disable the Auto Lane Change command.
 
 ### `command`
 
-Auto Lane Change chat enable / disable command.
+Auto Lane Change chat trigger command.
 
 **Type:** `string`\
 **Default:** `'lanes'`
@@ -93,10 +93,42 @@ Enable / Disable the Auto Park command.
 
 ### `command`
 
-Auto Park chat enable / disable command.
+Auto Park chat trigger command.
 
 **Type:** `string`\
 **Default:** `'park'`
+
+## Reverse Camera
+
+### `status`
+
+Enable / Disable the Reverse Camera command.
+
+**Type:** `boolean`\
+**Default:** `true`
+
+### `command`
+
+Reverse Camera chat trigger command.
+
+**Type:** `string`\
+**Default:** `'reverse'`
+
+## Adaptive Lighting
+
+### `status`
+
+Enable / Disable the Adaptive Lighting command.
+
+**Type:** `boolean`\
+**Default:** `true`
+
+### `command`
+
+Adaptive Lighting chat trigger command.
+
+**Type:** `string`\
+**Default:** `'light'`
 
 ## Smart Summon
 
@@ -109,7 +141,7 @@ Enable / Disable the Smart Summon command.
 
 ### `command`
 
-Smart Summon chat enable / disable command.
+Smart Summon chat trigger command.
 
 **Type:** `string`\
 **Default:** `'summon'`
@@ -132,7 +164,7 @@ Enable / Disable the Dance Mode command.
 
 ### `command`
 
-Dance Mode chat enable / disable command.
+Dance Mode chat trigger command.
 
 **Type:** `string`\
 **Default:** `'dance'`

@@ -1,5 +1,5 @@
 ---
-title: Changelog
+title: Changelog - Tesla Model S Plaid
 ---
 
 # Changelog
@@ -14,7 +14,7 @@ title: Changelog
 
 **Fixed**
 
-- Fixed panoramic glass roof texture
+- Panoramic glass roof texture
 
 ## Release 1.0.1
 
@@ -27,4 +27,4 @@ title: Changelog
 
 **Added**
 
-- Added Tesla Model S Plaid (2022)
+- Tesla Model S Plaid (2022)

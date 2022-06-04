@@ -1,3 +1,7 @@
+---
+title: Authentication - Information - Docs
+---
+
 import Image from 'next/image'
 
 # Authentication

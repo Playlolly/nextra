@@ -1,5 +1,5 @@
 ---
-title: Changelog
+title: Changelog - Tesla Semi
 ---
 
 # Changelog
@@ -14,4 +14,4 @@ title: Changelog
 
 **Added**
 
-- Added Tesla Semi (2022)
+- Tesla Semi (2022)

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FC } from "react";
 import { YouTubeLite } from "react-youtube-lite";
 
@@ -68,11 +67,14 @@ export const Autonomous: FC = () => {
           </p>
         </div>
         <div className="flex justify-center items-center rounded-md mt-4 mx-auto">
-          <Link href="/webstore/tesla-autonomous">
-            <a className="flex items-center justify-center max-w-4xl px-8 py-3 text-base font-medium text-white no-underline border border-transparent rounded-md bg-teslaBlue betterhover:dark:hover:bg-blue-800 betterhover:hover:bg-blue-800 md:py-3 md:text-lg md:px-5 md:leading-6">
-              Buy now $15 →
-            </a>
-          </Link>
+          <a
+            href="https://playlolly.tebex.io/package/4948736"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center max-w-4xl px-8 py-3 text-base font-medium text-white no-underline border border-transparent rounded-md bg-teslaBlue betterhover:dark:hover:bg-blue-800 betterhover:hover:bg-blue-800 md:py-3 md:text-lg md:px-5 md:leading-6"
+          >
+            Buy now $15 ↗
+          </a>
         </div>
 
         <div className="items-center grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-12">

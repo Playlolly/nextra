@@ -1,3 +1,7 @@
+---
+title: Download - Information - Docs
+---
+
 # Download
 
 After purchasing the resource you'll receive an email with a download link. Alternatively, you may head to Keymaster [here](https://keymaster.fivem.net/login) and download it.

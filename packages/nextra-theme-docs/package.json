@@ -1,6 +1,6 @@
 {
   "name": "@playlolly/nextra-theme-docs",
-  "version": "0.0.55",
+  "version": "0.0.56",
   "description": "A Nextra documentation theme for the Playlolly website.",
   "main": "index.js",
   "module": "index.js",
@@ -49,7 +49,7 @@
     "test": "vitest --run"
   },
   "dependencies": {
-    "@headlessui/react": "^1.5.0",
+    "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.6",
     "@mdx-js/react": "^2.1.0",
     "@reach/skip-nav": "^0.16.0",

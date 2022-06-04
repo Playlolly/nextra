@@ -47,8 +47,8 @@ export const Roadmap: FC = () => {
         { title: "Auto Lane Change", status: "done" },
         { title: "Autopark", status: "done" },
         { title: "Reverse Camera with Ultrasonic", status: "done" },
+        { title: "Adaptive Lighting", status: "done" },
         { title: "Sport Mode", status: "in-progress" },
-        { title: "Automatic Light Adjustment", status: "in-progress" },
       ],
     },
     {
@@ -68,15 +68,6 @@ export const Roadmap: FC = () => {
 
   return (
     <>
-      <Head>
-        <title>Roadmap - Playlolly</title>
-        <meta
-          name="og:description"
-          content="An overview of the features we will be adding to our
-          resources. If we receive enough support these features will be
-          released in upcoming updates."
-        />
-      </Head>
       <div className="dark:text-white dark:bg-black">
         <div className="relative dark:bg-black from-gray-50 to-gray-100">
           <div className="px-4 py-16 mx-auto sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-[90rem] lg:pt-24 lg:px-8">

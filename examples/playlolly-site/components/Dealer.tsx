@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import { FC } from "react";
 import { YouTubeLite } from "react-youtube-lite";
@@ -27,8 +26,8 @@ export const Dealer: FC = () => {
       image: "roleplay-ready",
     },
   ];
-  
- const configComingSoon = [
+
+  const configComingSoon = [
     {
       title: "Web Shop",
       type: "available soon",
@@ -45,7 +44,7 @@ export const Dealer: FC = () => {
     },
   ];
 
-  return(
+  return (
     <div id="dealer" className="bg-gray-100 dark:bg-neutral-900">
       <div className="px-4 py-16 mx-auto sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-[90rem] lg:pt-24 lg:px-8">
         <div className="mx-auto text-center dark:text-gray-400">
@@ -66,16 +65,19 @@ export const Dealer: FC = () => {
             The Tesla dealer is where you can buy your Tesla, just like in real
             life. The map has been lovingly created with custom 3D textures to
             represent a realistic dealership. The car salesman workspace is
-            frequently visited. All Tesla vehicles are displayed and you can even
-            take a test drive.
+            frequently visited. All Tesla vehicles are displayed and you can
+            even take a test drive.
           </p>
         </div>
         <div className="flex justify-center items-center rounded-md mt-4 mx-auto">
-          <Link href="/webstore/tesla-dealer">
-            <a className="flex items-center justify-center max-w-4xl px-8 py-3 text-base font-medium text-white no-underline border border-transparent rounded-md bg-teslaBlue betterhover:dark:hover:bg-blue-800 betterhover:hover:bg-blue-800 md:py-3 md:text-lg md:px-5 md:leading-6">
-              Buy now $15 →
-            </a>
-          </Link>
+          <a
+            href="https://playlolly.tebex.io/package/4948738"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center max-w-4xl px-8 py-3 text-base font-medium text-white no-underline border border-transparent rounded-md bg-teslaBlue betterhover:dark:hover:bg-blue-800 betterhover:hover:bg-blue-800 md:py-3 md:text-lg md:px-5 md:leading-6"
+          >
+            Buy now $15 ↗
+          </a>
         </div>
 
         <div className="items-center mt-12 lg:mt-16 lg:grid-cols-1 hidden dark:block">
@@ -173,5 +175,5 @@ export const Dealer: FC = () => {
         </div>
       </div>
     </div>
-  ) 
+  );
 };

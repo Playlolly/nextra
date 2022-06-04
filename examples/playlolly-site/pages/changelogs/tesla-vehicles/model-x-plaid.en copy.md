@@ -1,5 +1,5 @@
 ---
-title: Changelog
+title: Changelog - Tesla Model X Plaid
 ---
 
 # Changelog
@@ -21,4 +21,4 @@ title: Changelog
 
 **Added**
 
-- Added Tesla Model X Plaid (2022)
+- Tesla Model X Plaid (2022)

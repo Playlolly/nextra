@@ -1,19 +1,32 @@
 ---
-title: Changelog
+title: Changelog - Tesla Core
 ---
-
-import Callout from '@playlolly/nextra-theme-docs/callout'
 
 # Changelog
 
-## Release 1.0.9
+## Release 1.0.11
 
-<Callout type="warning">
-  It is recommended to delete all Tesla resources and upload them again using
-  the latest version to avoid possible bugs with Core Release 1.0.9. In
-  addition, only the Core resource should be started in the server
-  configuration.
-</Callout>
+**Added**
+
+- Support for the Model S, Model X and Roadster Sport
+
+## Release 1.0.10
+
+**Added**
+
+- Support for Adaptive Lighting function
+- HUD display for the Adaptive Lighting function
+- Possibility to add own Supercharger locations to the map
+
+**Updated**
+
+- General stability and performance improvements
+
+**Fixed**
+
+- For a small part of users the resource could not be started correctly, this is now fixed
+
+## Release 1.0.9
 
 **Added**
 
@@ -29,26 +42,27 @@ import Callout from '@playlolly/nextra-theme-docs/callout'
 
 **Added**
 
-- Added support for the Model 3, Roadster, Cybertruck, Cyberquad and Semi
+- Support for the Model 3, Roadster, Cybertruck, Cyberquad and Semi
 
 **Updated**
 
 - Various optimizations to ensure a lower ms rate
+- Vehicles will no longer be downloaded automatically and must now be downloaded manually
 
 ## Release 1.0.7
 
 **Added**
 
-- Added support for custom Supercharger blips and the corresponding color
+- Support for custom Supercharger blips and the corresponding color
 
 ## Release 1.0.6
 
 **Added**
 
-- Added support for custom notification systems
-- Added responsive HUD position for `2560x1440` and `3440x1440` screen resolution
-- Added seperate configuration options for custom supported vehicles for Supercharger, HUD and Autonomous
-- Added support for the Model S Plaid, Model X Plaid and Model Y
+- Support for custom notification systems
+- Responsive HUD position for `2560x1440` and `3440x1440` screen resolution
+- Seperate configuration options for custom supported vehicles for Supercharger, HUD and Autonomous
+- Support for the Model S Plaid, Model X Plaid and Model Y
 
 **Updated**
 
@@ -65,9 +79,9 @@ import Callout from '@playlolly/nextra-theme-docs/callout'
 
 **Added**
 
-- Added turn indicators to the HUD
-- Added HUD display for the Auto Park function
-- Added responsive HUD position for `2560x1080` screen resolution
+- Turn indicators in the HUD
+- HUD display for the Auto Park function
+- Responsive HUD position for `2560x1080` screen resolution
 
 **Updated**
 
@@ -79,7 +93,7 @@ import Callout from '@playlolly/nextra-theme-docs/callout'
 **Added**
 
 - Traffic lights detected by the autopilot are displayed with the corresponding color in the HUD
-- Added HUD display for the Auto Lane Change function
+- HUD display for the Auto Lane Change function
 - If a traffic light is ignored by honking with `E` while the autopilot is active, it will be signaled in the HUD
 
 **Updated**

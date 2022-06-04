@@ -1,5 +1,5 @@
 ---
-title: How to use
+title: How to use - Tesla Core - Docs
 ---
 
 # How to use

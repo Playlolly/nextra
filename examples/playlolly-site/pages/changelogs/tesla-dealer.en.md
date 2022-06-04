@@ -1,5 +1,5 @@
 ---
-title: Changelog
+title: Changelog - Tesla Dealer
 ---
 
 # Changelog
@@ -14,10 +14,10 @@ title: Changelog
 
 **Added**
 
-- Added Design Studio
-- Added Config Desk
-- Added Entrance counter
-- Added more custom 3D Props
+- Design Studio
+- Config Desk
+- Entrance counter
+- More custom 3D Props
 
 **Updated**
 
