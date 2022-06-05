@@ -77,9 +77,9 @@ export default function Navbar({ flatDirectories, items }: NavBarProps) {
         <nav className="flex max-w-[90rem] mx-auto items-center left-0 right-0 h-16 pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
           <div className="flex items-center mr-2 flex-auto">
             <Link href="/">
-              <a className="no-underline text-current inline-flex items-center hover:opacity-75">
+              <span className="no-underline text-current inline-flex items-center hover:opacity-75 cursor-pointer">
                 {renderComponent(config.logo, { locale })}
-              </a>
+              </span>
             </Link>
           </div>
 
@@ -104,10 +104,10 @@ export default function Navbar({ flatDirectories, items }: NavBarProps) {
 
                 return (
                   <Link href={href} key={page.route}>
-                    <a
+                    <span
                       className={cn(
                         'nextra-nav-link',
-                        'no-underline whitespace-nowrap pr-4 hidden md:inline-block',
+                        'no-underline whitespace-nowrap pr-4 hidden md:inline-block cursor-pointer',
                         isActive
                           ? 'active text-current font-medium'
                           : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200'
@@ -118,7 +118,7 @@ export default function Navbar({ flatDirectories, items }: NavBarProps) {
                         : {})}
                     >
                       {page.title}
-                    </a>
+                    </span>
                   </Link>
                 )
               })
