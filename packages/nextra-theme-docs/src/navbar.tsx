@@ -175,6 +175,7 @@ export default function Navbar({ flatDirectories, items }: NavBarProps) {
           <button
             className="nextra-menu-icon block md:hidden p-2"
             onClick={() => setMenu(!menu)}
+            aria-label="Navigation Menu"
           >
             <svg
               fill="none"
