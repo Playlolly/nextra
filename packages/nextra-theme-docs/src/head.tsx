@@ -40,20 +40,21 @@ export default function Head({ title, locale, meta }: HeadProps) {
           />
           <meta
             name="theme-color"
-            content="#111111"
+            content="#000000"
             media="(prefers-color-scheme: dark)"
           />
         </>
       ) : (
         <meta
           name="theme-color"
-          content={renderedTheme === 'dark' ? '#111111' : '#ffffff'}
+          content={renderedTheme === 'dark' ? '#000000' : '#ffffff'}
         />
       )}
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"
       />
+      <meta name="description" content={meta.description} />
     </NextHead>
   )
 }
