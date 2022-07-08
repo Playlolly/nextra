@@ -62,13 +62,27 @@ const Body: React.FC<BodyProps> = ({
     <React.Fragment>
       <SkipNavContent />
       {themeContext.layout === 'full' ? (
-        <article
-          className={cn(
-            'nextra-body full relative justify-center overflow-x-hidden',
-            !themeContext.sidebar ? 'expand' : ''
-          )}
-        >
+        <article className="nextra-body full relative justify-center overflow-x-hidden pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
           <MDXTheme>{children}</MDXTheme>
+          {date && config.gitTimestamp ? (
+            <div className="text-xs text-right block text-gray-500 mt-12 mb-8 dark:text-gray-400 pointer-default">
+              {typeof config.gitTimestamp === 'string'
+                ? config.gitTimestamp +
+                  ' ' +
+                  date.toLocaleDateString(locale, {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })
+                : renderComponent(config.gitTimestamp, {
+                    timestamp: date,
+                    locale
+                  })}
+            </div>
+          ) : (
+            <div className="mt-16" />
+          )}
+          {navLinks}
         </article>
       ) : themeContext.layout === 'raw' ? (
         <div className="nextra-body full relative overflow-x-hidden expand">
@@ -83,7 +97,7 @@ const Body: React.FC<BodyProps> = ({
               : ''
           )}
         >
-          <main className="mx-auto max-w-4xl px-6 md:px-8 pt-4 z-10 min-w-0 w-full">
+          <main className="max-w-4xl px-6 md:px-8 pt-4 z-10 min-w-0 w-full">
             {breadcrumb}
             <MDXTheme>{children}</MDXTheme>
             {date && config.gitTimestamp ? (
@@ -159,6 +173,8 @@ const Content: React.FC<LayoutProps> = ({
   const themeContext = { ...activeThemeContext, ...meta }
 
   const hideSidebar = !themeContext.sidebar || themeContext.layout === 'raw'
+  const hideToc = !themeContext.toc || themeContext.layout === 'raw'
+
   const headingArr = headings ?? []
   return (
     <React.Fragment>
@@ -184,12 +200,8 @@ const Content: React.FC<LayoutProps> = ({
             />
           ) : null}
           <ActiveAnchor>
-            <div
-              className={`${
-                hideSidebar ? '' : 'max-w-[90rem]'
-              } w-full mx-auto flex flex-1 items-stretch`}
-            >
-              <div className="flex flex-1">
+            <div className="max-w-[90rem] w-full mx-auto flex flex-1 items-stretch">
+              <div className="flex flex-1 w-full">
                 <Sidebar
                   directories={docsDirectories}
                   flatDirectories={flatDirectories}
@@ -200,7 +212,7 @@ const Content: React.FC<LayoutProps> = ({
                   includePlaceholder={themeContext.layout === 'default'}
                 />
                 {activeType === 'page' ||
-                !themeContext.toc ||
+                hideToc ||
                 themeContext.layout !== 'default' ? (
                   themeContext.layout === 'full' ||
                   themeContext.layout === 'raw' ? null : (

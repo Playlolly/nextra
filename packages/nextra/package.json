@@ -1,6 +1,6 @@
 {
   "name": "nextra",
-  "version": "0.0.54",
+  "version": "0.0.56",
   "description": "Next.js and MDX based site generator for the Playlolly website.",
   "main": "index.js",
   "repository": {

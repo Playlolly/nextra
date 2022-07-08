@@ -74,12 +74,12 @@ export default function Navbar({ flatDirectories, items }: NavBarProps) {
         }
       >
         <div className="nextra-nav-container-blur absolute w-full h-full bg-white dark:bg-dark pointer-events-none" />
-        <nav className="flex max-w-[90rem] mx-auto items-center left-0 right-0 h-16 pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
+        <nav className="flex gap-2 max-w-[90rem] mx-auto items-center left-0 right-0 h-16 pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
           <div className="flex items-center mr-2 flex-auto">
             <Link href="/">
-              <span className="no-underline text-current inline-flex items-center hover:opacity-75 cursor-pointer">
+              <a className="no-underline text-current inline-flex items-center hover:opacity-75">
                 {renderComponent(config.logo, { locale })}
-              </span>
+              </a>
             </Link>
           </div>
 
@@ -104,28 +104,32 @@ export default function Navbar({ flatDirectories, items }: NavBarProps) {
 
                 return (
                   <Link href={href} key={page.route}>
-                    <span
+                    <a
                       className={cn(
                         'nextra-nav-link',
-                        'no-underline whitespace-nowrap pr-4 hidden md:inline-block cursor-pointer',
-                        isActive
-                          ? 'active text-current font-medium'
-                          : 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200'
+                        'no-underline whitespace-nowrap p-2 -ml-2 hidden md:inline-block',
+                        !isActive || page.newWindow
+                          ? 'text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200'
+                          : 'active text-current font-medium'
                       )}
                       aria-selected={isActive}
                       {...(page.newWindow
-                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        ? {
+                            target: '_blank',
+                            rel: 'noopener noreferrer',
+                            'aria-selected': false
+                          }
                         : {})}
                     >
                       {page.title}
-                    </span>
+                    </a>
                   </Link>
                 )
               })
             : null}
 
           <div>
-            <div className="hidden md:inline-block mr-2">
+            <div className="hidden md:inline-block">
               {config.customSearch ||
                 (config.search ? (
                   config.unstable_flexsearch ? (
@@ -209,8 +213,6 @@ export default function Navbar({ flatDirectories, items }: NavBarProps) {
               </g>
             </svg>
           </button>
-
-          <div className="-mr-2" />
         </nav>
       </div>
     </>
