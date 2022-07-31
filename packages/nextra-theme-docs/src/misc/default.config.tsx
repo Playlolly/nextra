@@ -1,55 +1,50 @@
 import React from 'react'
+import { DocsThemeConfig } from '../types'
 
-const defaultTheme = {
-  projectLink: 'https://github.com/shuding/nextra',
-  docsRepositoryBase: 'https://github.com/shuding/nextra',
-  titleSuffix: ' – Nextra',
+const defaultTheme: DocsThemeConfig = {
+  titleSuffix: ' – Playlolly',
   nextLinks: true,
   prevLinks: true,
   search: true,
   darkMode: true,
   nextThemes: {
     defaultTheme: 'system',
-    storageKey: 'theme',
-    forcedTheme: undefined
+    storageKey: 'theme'
   },
   defaultMenuCollapsed: false,
   // @TODO: Can probably introduce a set of options to use Google Fonts directly
   // font: true,
   footer: true,
-  footerText: `© ${new Date().getFullYear()} Playlolly. All rights reserved.`,
+  footerText: `MIT ${new Date().getFullYear()} © Playlolly.`,
   gitTimestamp: 'Last updated on',
   logo: (
-    <React.Fragment>
-      <span className="mr-2 font-extrabold hidden md:inline">Nextra</span>
-      <span className="text-gray-600 font-normal hidden md:inline">
-        The Next Docs Builder
+    <>
+      <span className="mr-2 hidden font-extrabold md:inline">Playlolly</span>
+      <span className="hidden font-normal text-gray-600 md:inline">
+        Playlolly
       </span>
-    </React.Fragment>
+    </>
   ),
   head: (
-    <React.Fragment>
+    <>
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta httpEquiv="Content-Language" content="en" />
-      <meta name="description" content="Nextra: the next docs builder" />
+      <meta name="description" content="Playlolly" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@shuding_" />
-      <meta property="og:title" content="Nextra: the next docs builder" />
-      <meta property="og:description" content="Nextra: the next docs builder" />
-      <meta name="apple-mobile-web-app-title" content="Nextra" />
-    </React.Fragment>
+      <meta name="twitter:site" content="@playlolly" />
+      <meta property="og:title" content="Playlolly" />
+      <meta property="og:description" content="Playlolly" />
+      <meta name="apple-mobile-web-app-title" content="Playlolly" />
+    </>
   ),
-  searchPlaceholder: ({ locale }: { locale?: string }) => {
-    if (locale === 'zh-CN') return '搜索文档...'
+  searchPlaceholder: () => {
     return 'Search documentation...'
   },
   unstable_searchResultEmpty: () => (
-    <span className="block p-8 text-center text-gray-400 text-sm select-none">
+    <span className="block select-none p-8 text-center text-sm text-gray-400">
       No results found.
     </span>
   )
-  // direction: 'ltr',
-  // i18n: [{ locale: 'en-US', text: 'English', direction: 'ltr' }],
 }
 
 export default defaultTheme

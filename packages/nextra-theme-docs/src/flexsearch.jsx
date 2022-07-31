@@ -6,7 +6,7 @@ import React, {
   useEffect,
   Fragment
 } from 'react'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import cn from 'classnames'
 import Link from 'next/link'
 import FlexSearch from 'flexsearch'
@@ -15,6 +15,7 @@ import { Transition } from '@headlessui/react'
 import { useConfig } from './config'
 import renderComponent from './utils/render-component'
 import useMenuContext from './utils/menu-context'
+import { SpinnerIcon } from 'nextra/icons'
 
 const Item = ({
   page,
@@ -29,22 +30,22 @@ const Item = ({
   return (
     <>
       {first ? (
-        <div className="nextra-search-section mx-2.5 px-2.5 pb-1.5 mb-2 mt-6 first:mt-0 font-semibold uppercase text-xs text-gray-500 select-none dark:text-gray-300">
+        <div className="nextra-search-section mx-2.5 mb-2 mt-6 select-none px-2.5 pb-1.5 text-xs font-semibold uppercase text-gray-500 first:mt-0 dark:text-gray-300">
           {page}
         </div>
       ) : null}
-      <Link href={Router.basePath + href}>
+      <Link href={href}>
         <a
           className="block no-underline"
           onMouseMove={onHover}
           onClick={onClick}
         >
           <li className={cn({ active })}>
-            <div className="font-semibold dark:text-white leading-5">
+            <div className="font-semibold leading-5 dark:text-white">
               {title}
             </div>
             {excerpt ? (
-              <div className="excerpt mt-1 text-gray-600 text-sm leading-[1.35rem] dark:text-gray-400">
+              <div className="excerpt mt-1 text-sm leading-[1.35rem] text-gray-600 dark:text-gray-400">
                 {excerpt}
               </div>
             ) : null}
@@ -112,7 +113,7 @@ export default function Search() {
   const doSearch = () => {
     if (!search) return
 
-    const localeCode = Router.locale || 'default'
+    const localeCode = router.locale
     const index = indexes[localeCode]
 
     if (!index) return
@@ -250,14 +251,13 @@ export default function Search() {
   )
 
   const load = async () => {
-    const localeCode = Router.locale || 'default'
+    const localeCode = router.locale
     if (!indexes[localeCode] && !loading) {
       setLoading(true)
-      const data = await (
-        await fetch(
-          `${Router.basePath}/_next/static/chunks/nextra-data-${localeCode}.json`
-        )
-      ).json()
+      const response = await fetch(
+        `${router.basePath}/_next/static/chunks/nextra-data-${localeCode}.json`
+      )
+      const data = await response.json()
 
       const pageIndex = new FlexSearch.Document({
         cache: 100,
@@ -370,9 +370,9 @@ export default function Search() {
   const renderList = show && !!search
 
   return (
-    <div className="relative w-full nextra-search nextra-flexsearch md:w-64">
+    <div className="nextra-search nextra-flexsearch relative w-full md:w-64">
       {renderList && (
-        <div className="z-10 search-overlay" onClick={() => setShow(false)} />
+        <div className="search-overlay z-10" onClick={() => setShow(false)} />
       )}
       <div className="relative flex items-center">
         <input
@@ -380,7 +380,7 @@ export default function Search() {
             setSearch(e.target.value)
             setShow(true)
           }}
-          className="block w-full px-3 py-2 leading-tight rounded-lg appearance-none focus:outline-none focus:ring-1 focus:ring-gray-200 focus:bg-white hover:bg-opacity-5 transition-colors dark:focus:bg-dark dark:focus:ring-gray-100 dark:focus:ring-opacity-20"
+          className="block w-full appearance-none rounded-lg px-3 py-2 leading-tight transition-colors focus:bg-white focus:outline-none focus:ring-1 focus:ring-gray-200 dark:focus:bg-dark dark:focus:ring-gray-100/20"
           type="search"
           placeholder={renderComponent(
             config.searchPlaceholder,
@@ -397,9 +397,9 @@ export default function Search() {
           ref={input}
           spellCheck={false}
         />
-        {renderList ? null : (
-          <div className="hidden sm:flex absolute inset-y-0 right-0 py-1.5 pr-1.5 select-none pointer-events-none">
-            <kbd className="inline-flex items-center px-1.5 font-mono text-sm font-medium bg-white dark:bg-dark dark:bg-opacity-50 text-gray-400 dark:text-gray-500 dark:border-gray-100 dark:border-opacity-20 border rounded">
+        {!renderList && (
+          <div className="pointer-events-none absolute inset-y-0 right-0 hidden select-none py-1.5 pr-1.5 sm:flex">
+            <kbd className="inline-flex items-center rounded border bg-white px-1.5 font-mono text-sm font-medium text-gray-400 dark:border-gray-100/20 dark:bg-dark/50 dark:text-gray-500">
               /
             </kbd>
           </div>
@@ -412,29 +412,10 @@ export default function Search() {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <ul className="absolute z-20 px-0 py-2.5 m-0 mt-2 top-full rounded-xl overflow-hidden overscroll-contain shadow-xl list-none">
+        <ul className="absolute top-full z-20 m-0 mt-2 list-none overflow-hidden overscroll-contain rounded-xl px-0 py-2.5 shadow-xl">
           {loading ? (
-            <span className="p-8 text-center text-gray-400 text-sm select-none flex justify-center">
-              <svg
-                className="animate-spin -ml-1 mr-2 h-5 w-5 text-gray-400"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
+            <span className="flex select-none justify-center p-8 text-center text-sm text-gray-400">
+              <SpinnerIcon className="-ml-1 mr-2 h-5 w-5 animate-spin text-gray-400" />
               <span>Loading...</span>
             </span>
           ) : results.length === 0 ? (
@@ -449,13 +430,11 @@ export default function Search() {
                   key={`search-item-${i}`}
                   page={res.page}
                   title={res.title}
-                  href={res.route}
+                  href={router.basePath + res.route}
                   excerpt={res.excerpt}
                   active={i === active}
                   onHover={() => setActive(i)}
-                  onClick={() => {
-                    finishSearch()
-                  }}
+                  onClick={finishSearch}
                 />
               )
             })

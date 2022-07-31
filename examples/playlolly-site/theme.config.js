@@ -10,8 +10,6 @@ const Logo = ({ height }) => (
 );
 
 export default {
-  github: "https://github.com/playlolly",
-  projectLink: "https://github.com/playlolly",
   docsRepositoryBase: "https://discord.gg/BC73kTVSTK",
   titleSuffix: " | Playlolly",
   search: true,

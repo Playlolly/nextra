@@ -4,7 +4,8 @@ import React, {
   useRef,
   useState,
   ReactNode,
-  useContext
+  useContext,
+  PropsWithChildren
 } from 'react'
 import 'intersection-observer'
 
@@ -133,7 +134,7 @@ const HeaderLink = ({
       {anchor}
       <a
         href={'#' + slug}
-        className="anchor text-current no-underline no-outline"
+        className="anchor no-outline text-current no-underline"
       >
         {children}
         <span className="anchor-icon" aria-hidden>
@@ -322,11 +323,12 @@ const getComponents = (context: { index: number }) => ({
     Bleed,
     Callout,
     Tabs,
-    Tab
+    Tab,
+    Collapse
   }
 })
 
-export const MDXTheme: React.FC<{}> = ({ children }) => {
+export const MDXTheme: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <MDXProvider components={getComponents({ index: 0 }) as any}>
       {children}

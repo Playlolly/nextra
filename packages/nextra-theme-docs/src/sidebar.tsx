@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { Heading } from 'nextra'
 import scrollIntoView from 'scroll-into-view-if-needed'
+
 import { useActiveAnchor } from './misc/active-anchor'
 import { getFSRoute } from './utils/get-fs-route'
 import useMenuContext from './utils/menu-context'
@@ -12,15 +13,17 @@ import Search from './search'
 import Flexsearch from './flexsearch'
 import { useConfig } from './config'
 import getHeadingText from './utils/get-heading-text'
-import { Item, PageItem } from './utils/normalize-pages'
-import ArrowRight from './icons/arrow-right'
+import { Item, MenuItem, PageItem } from './utils/normalize-pages'
+import LocaleSwitch from './locale-switch'
+import ThemeSwitch from './theme-switch'
+import { ArrowRightIcon } from 'nextra/icons'
 import Collapse from './components/collapse'
 import renderComponent from './utils/render-component'
 
 const TreeState: Record<string, boolean> = {}
 
 interface FolderProps {
-  item: PageItem | Item
+  item: PageItem | MenuItem | Item
   anchors: string[]
 }
 
@@ -57,7 +60,7 @@ function FolderImpl({ item, anchors }: FolderProps) {
         if (clickedToggleIcon) {
           e.preventDefault()
         }
-        if (item.withIndexPage) {
+        if ((item as Item).withIndexPage) {
           // If it's focused, we toggle it. Otherwise always open it.
           if (active || clickedToggleIcon) {
             TreeState[item.route] = !open
@@ -75,34 +78,66 @@ function FolderImpl({ item, anchors }: FolderProps) {
     >
       <span className="flex items-center justify-between">
         {item.title}
-        <ArrowRight
+        <ArrowRightIcon
           height="1em"
-          className={
-            'ml-2 p-[2px] rounded-sm min-w-[18px] h-[18px] dark:hover:bg-gray-100 hover:bg-gray-800 hover:bg-opacity-5 dark:hover:bg-opacity-5'
-          }
-          childProps={{
-            className: cn(
-              'transition-transform origin-center',
-              open ? 'rotate-90' : ''
-            )
-          }}
+          className={cn(
+            'ml-2 h-[18px] min-w-[18px] rounded-sm p-[2px] hover:bg-gray-800/5 dark:hover:bg-gray-100/5',
+            '[&>path]:origin-center [&>path]:transition-transform',
+            open && '[&>path]:rotate-90'
+          )}
         />
       </span>
     </a>
   )
 
+  if (item.type === 'menu') {
+    const menu = item as MenuItem
+    const routes = Object.fromEntries(
+      (menu.children || []).map(route => [route.name, route])
+    )
+    const directories = Object.entries(menu.items || {}).map(([key, item]) => {
+      const route = routes[key] || {
+        name: key,
+        locale: menu.locale,
+        route: menu.route + '/' + key
+      }
+      return {
+        ...route,
+        ...item
+      }
+    })
+
+    return (
+      <li className={cn({ open, active })}>
+        {link}
+        <Collapse open={open}>
+          <Menu
+            submenu
+            directories={directories}
+            base={item.route}
+            anchors={anchors}
+          />
+        </Collapse>
+      </li>
+    )
+  }
+
   return (
     <li className={cn({ open, active })}>
-      {item.withIndexPage ? <Link href={item.route}>{link}</Link> : link}
+      {(item as Item).withIndexPage ? (
+        <Link href={item.route}>{link}</Link>
+      ) : (
+        link
+      )}
       <Collapse open={open}>
-        {Array.isArray(item.children) && (
+        {Array.isArray(item.children) ? (
           <Menu
             submenu
             directories={item.children}
             base={item.route}
             anchors={anchors}
           />
-        )}
+        ) : null}
       </Collapse>
     </li>
   )
@@ -121,17 +156,18 @@ function Separator({ title, topLevel }: SeparatorProps) {
     <li
       className={cn(
         topLevel ? 'first:mt-1' : 'first:mt-2',
-        hasTitle ? 'mt-5 mb-2' : 'my-4'
+        hasTitle ? 'mt-5 mb-2' : 'my-4',
+        'break-words'
       )}
     >
       {hasTitle ? (
-        <div className="text-sm mx-2 py-1.5 font-semibold no-underline text-gray-900 dark:text-gray-100">
+        <div className="mx-2 py-1.5 text-sm font-semibold text-gray-900 no-underline dark:text-gray-100">
           {sidebarSubtitle
             ? renderComponent(sidebarSubtitle, { title })
             : title}
         </div>
       ) : (
-        <hr className="mx-2 border-t border-gray-200 dark:border-primary-100 dark:border-opacity-10" />
+        <hr className="mx-2 border-t border-gray-200 dark:border-primary-100/10" />
       )}
     </li>
   )
@@ -149,7 +185,6 @@ function File({ item, anchors, topLevel }: FileProps) {
   const slugger = new Slugger()
   const activeAnchor = useActiveAnchor()
   const { setMenu } = useMenuContext()
-
   const title = item.title
 
   if (item.type === 'separator') {
@@ -169,12 +204,13 @@ function File({ item, anchors, topLevel }: FileProps) {
       })
 
       return (
-        <li className={active ? 'active' : ''}>
+        <li className={cn(active && 'active', 'break-words')}>
           <Link href={(item as PageItem).href || item.route}>
             <a
               {...((item as PageItem).newWindow
                 ? { target: '_blank', rel: 'noopener noreferrer' }
                 : {})}
+              className="break-words"
               onClick={() => {
                 setMenu(false)
               }}
@@ -196,10 +232,12 @@ function File({ item, anchors, topLevel }: FileProps) {
                       setMenu(false)
                     }}
                   >
-                    <span className="flex text-sm">
+                    <span className="flex text-sm w-full">
                       <span className="opacity-25">#</span>
                       <span className="mr-2"></span>
-                      <span className="inline-block">{text}</span>
+                      <span className="inline-block w-full break-words">
+                        {text}
+                      </span>
                     </span>
                   </a>
                 </li>
@@ -212,7 +250,7 @@ function File({ item, anchors, topLevel }: FileProps) {
   }
 
   return (
-    <li className={active ? 'active' : ''}>
+    <li className={cn(active && 'active', 'break-words')}>
       <Link href={(item as PageItem).href || item.route}>
         <a
           {...((item as PageItem).newWindow
@@ -239,7 +277,10 @@ function Menu({ directories, anchors, submenu }: MenuProps) {
   return (
     <ul>
       {directories.map(item => {
-        if (item.children && (item.children.length || !item.withIndexPage)) {
+        if (
+          item.type === 'menu' ||
+          (item.children && (item.children.length || !item.withIndexPage))
+        ) {
           return <Folder key={item.name} item={item} anchors={anchors} />
         }
         return (
@@ -256,7 +297,7 @@ function Menu({ directories, anchors, submenu }: MenuProps) {
 }
 
 interface SideBarProps {
-  directories: PageItem[]
+  docsDirectories: PageItem[]
   flatDirectories: Item[]
   fullDirectories: Item[]
   asPopover?: boolean
@@ -267,7 +308,7 @@ interface SideBarProps {
 
 const emptyHeading: any[] = []
 export default function Sidebar({
-  directories,
+  docsDirectories,
   flatDirectories,
   fullDirectories,
   asPopover = false,
@@ -311,18 +352,18 @@ export default function Sidebar({
   return (
     <>
       {includePlaceholder && asPopover ? (
-        <div className="hidden xl:block w-64 h-0 flex-shrink-0" />
+        <div className="hidden h-0 w-64 flex-shrink-0 xl:block" />
       ) : null}
       <aside
         className={cn(
-          'nextra-sidebar-container nextra-scrollbar fixed flex-shrink-0 w-full md:w-64 md:sticky z-[15] top-16 self-start overflow-y-auto transform-none h-[calc(100vh-4rem)]',
+          'nextra-sidebar-container nextra-scrollbar fixed top-16 z-[15] h-[calc(100vh-4rem)] w-full flex-shrink-0 self-start overflow-y-auto md:sticky md:w-64',
           asPopover ? 'md:hidden' : 'md:block',
           hasMenu ? 'with-menu' : '',
           { open: menu }
         )}
       >
-        <div className="nextra-sidebar select-none w-full h-full md:h-auto pl-[calc(env(safe-area-inset-left)-1.5rem)]">
-          <div className="p-4 min-h-[calc(100vh-4rem-61px)]">
+        <div className="nextra-sidebar h-full w-full select-none pl-[calc(env(safe-area-inset-left)-1.5rem)] md:h-auto">
+          <div className="min-h-[calc(100vh-4rem-61px)] p-4">
             <div className="nextra-sidebar-search mb-4 block md:hidden">
               {config.customSearch ||
                 (config.search ? (
@@ -335,7 +376,8 @@ export default function Sidebar({
             </div>
             <div className="hidden md:block">
               <Menu
-                directories={directories}
+                // The sidebar menu, shows only the docs directories.
+                directories={docsDirectories}
                 anchors={
                   // When the viewport size is larger than `md`, hide the anchors in
                   // the sidebar when `floatTOC` is enabled.
@@ -345,6 +387,7 @@ export default function Sidebar({
             </div>
             <div className="md:hidden">
               <Menu
+                // The mobile dropdown menu, shows all the directories.
                 directories={fullDirectories}
                 anchors={
                   // Always show the anchor links on mobile (`md`).
